@@ -16,46 +16,46 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
-      
+
       path: '/',
       redirect: 'login',
-      hidden:true
+      hidden: true
     },
     {
       path: '/login',
       name: 'login',
       component: Login,
-      hidden:true
+      hidden: true
     },
     {
       path: '/home',
       name: 'Order manager',
       component: Home,
-      iconClass:'fa fa-list-alt',
-      children:[
+      iconClass: 'fa fa-list-alt',
+      children: [
         {
           path: '/home',
           name: 'Order List',
           component: OrderList,
-          iconClass:'fa fa-users',
+          iconClass: 'fa fa-users'
         }
       ]
     }, {
       path: '/service',
       name: 'Service manager',
       component: Home,
-      iconClass:'fa fa-list-alt',
-      children:[
+      iconClass: 'fa fa-list-alt',
+      children: [
         {
           path: '/service/list',
           name: 'Service list',
           component: ServiceList,
-          iconClass:'fa fa-users',
+          iconClass: 'fa fa-users'
         }, {
           path: '/service/groupList',
           name: 'Service group list',
           component: ServiceGroupList,
-          iconClass:'fa fa-users',
+          iconClass: 'fa fa-users'
         }
       ]
     },
@@ -63,13 +63,13 @@ export default new Router({
       path: '/staff',
       name: 'Staff manager',
       component: Home,
-      iconClass:'fa fa-list-alt',
-      children:[
+      iconClass: 'fa fa-list-alt',
+      children: [
         {
           path: '/staff/list',
           name: 'Staff list',
           component: StaffList,
-          iconClass:'fa fa-users',
+          iconClass: 'fa fa-users'
         }
       ]
     },
@@ -77,14 +77,14 @@ export default new Router({
       path: '/data',
       name: '数据分析',
       component: Home,
-      iconClass:'fa fa-bar-chart',
-      children:[
+      iconClass: 'fa fa-bar-chart',
+      children: [
         {
           path: '/data/dataview',
           name: '数据概览',
           component: DataOverView,
-          iconClass:'fa fa-line-chart',
-        },
+          iconClass: 'fa fa-line-chart'
+        }
         // {
         //   path: '/home/mapdata',
         //   name: '地图概览',
@@ -97,8 +97,8 @@ export default new Router({
       path: '*',
       name: 'NotFound',
       component: NotFound,
-      hidden:true
+      hidden: true
     }
   ],
-  mode:'history'
+  mode: 'history'
 })

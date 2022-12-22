@@ -10,7 +10,7 @@
             <span class="loginOut" @click="loginOut">Log out</span>
           </div>
         </el-header>
-        
+
         <el-container class="main">
           <Menu></Menu>
           <el-main>
@@ -31,38 +31,37 @@
 </template>
 
 <script>
-import Menu from "./common/Menu"
-import Footer from "./common/Footer"
+import Menu from './common/Menu'
+import Footer from './common/Footer'
 export default {
   name: 'Home',
-  components:{
+  components: {
     Menu,
     Footer
   },
   data () {
     return {
       isCollapse: false,
-      username:'',
+      username: ''
     }
   },
-  created() {
-    this.username=localStorage.getItem('username')
+  created () {
+    this.username = localStorage.getItem('username')
   },
-  methods:{
-    loginOut(){
+  methods: {
+    loginOut () {
       this.$alert('您确定要退出吗？', '退出提示', {
-          confirmButtonText: '确定',
-          callback: action => {
-            // localStorage.removeItem('token')
-            localStorage.clear()
-            this.$router.push('/login')
-          }
+        confirmButtonText: '确定',
+        callback: action => {
+          // localStorage.removeItem('token')
+          localStorage.clear()
+          this.$router.push('/login')
+        }
       })
     }
   }
 }
 </script>
-
 
 <style>
 .main{

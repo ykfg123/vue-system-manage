@@ -1,24 +1,23 @@
 <template>
-	<div class="map">
-		<div id="map"></div>
-	</div>
+  <div class="map">
+    <div id="map"></div>
+  </div>
 </template>
 <script>
 
 export default {
-	data() {
-		return {
-			
-		}
-	},
+  data () {
+    return {}
+  }
 }
 </script>
 <style>
 .map {
-	width: 100%;
+  width: 100%;
 }
+
 #map {
-	width: 100%;
-	height: 600px;
+  width: 100%;
+  height: 600px;
 }
 </style>

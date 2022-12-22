@@ -87,105 +87,105 @@
 </template>
 
 <script>
-import Page from "../common/Pageing"
+import Page from '../common/Pageing'
 
 export default {
-    components:{
-        Page,
-    },
-    data() {
-        return {
-            formInline: {
-                user: '',
-                region: ''
-            },
-            tableData: [],
-            dialogFormVisible: false,
-            form: {},
-            formLabelWidth: '80px',
-            state:false
-        }
-    },
-    created(){
-        this.getDataList()
-    },
-    methods:{
-        sure() {
-            console.log(this.form)
-            if(this.state) {
-                // 调用修改接口
-                this.service
-                .put('http://rap2api.taobao.org/app/mock/281225/studentlist', this.form)
-                .then(res => {
-                    // if(res.data.status==='200'){
-                    //     this.$message({
-                    //         message:'修改成功',
-                    //         type:'success',
-                    //         duration:1000
-                    //     })
-                    //     localStorage.setItem('token',res.data.data.token)
-                    //     localStorage.setItem('token',res.data.data.username)
-                    // }else{
-                    //     console.log(res.data.msg)
-                    // }
-                    // console.log(res.data.data)
-                })
-                .catch(err => {
-                  console.log(err)
-                })
-            } else {
-                // 调用新增接口
-                // this.service.post('接口地址', this.form)
-                // .then(res => {
-
-                // })
-                // .catch(err => {
-                //   console.log(err)
-                // })
-            }
-            this.dialogFormVisible = false
-        },
-        addStudent(){
-            this.state=false
-            this.form={
-                sex:'1'
-            }
-            this.dialogFormVisible = true
-        },
-        updateInfo(row){
-            this.state=true
-            this.form={...row}
-            this.dialogFormVisible = true
-            console.log(row)
-        },
-        del(){
-            this.$alert('您确定要删除吗？', '删除提示', {
-                confirmButtonText: '确定',
-                callback: action => {
-                    //删除对应接口
-                }
-            })
-        },
-        onSubmit() {
-            console.log('submit!');
-        },
-        getDataList(){
-            this.service
-            .get("studentlist",{page:1,size:10})
-            .then(res=>{
-                if(res.data.status==="200"){
-                    res.data.data.forEach(item =>{
-                        item.sex==="1"?item.sex_text="男":item.sex_text="女"
-                    })
-                    this.tableData=[...res.data.data]
-                }
-                // console.log(res)
-            })
-            .catch(err=>{
-                console.log(err)
-            })
-        }
+  components: {
+    Page
+  },
+  data () {
+    return {
+      formInline: {
+        user: '',
+        region: ''
+      },
+      tableData: [],
+      dialogFormVisible: false,
+      form: {},
+      formLabelWidth: '80px',
+      state: false
     }
+  },
+  created () {
+    this.getDataList()
+  },
+  methods: {
+    sure () {
+      console.log(this.form)
+      if (this.state) {
+        // 调用修改接口
+        this.service
+          .put('http://rap2api.taobao.org/app/mock/281225/studentlist', this.form)
+          .then(res => {
+            // if(res.data.status==='200'){
+            //     this.$message({
+            //         message:'修改成功',
+            //         type:'success',
+            //         duration:1000
+            //     })
+            //     localStorage.setItem('token',res.data.data.token)
+            //     localStorage.setItem('token',res.data.data.username)
+            // }else{
+            //     console.log(res.data.msg)
+            // }
+            // console.log(res.data.data)
+          })
+          .catch(err => {
+            console.log(err)
+          })
+      } else {
+        // 调用新增接口
+        // this.service.post('接口地址', this.form)
+        // .then(res => {
+
+        // })
+        // .catch(err => {
+        //   console.log(err)
+        // })
+      }
+      this.dialogFormVisible = false
+    },
+    addStudent () {
+      this.state = false
+      this.form = {
+        sex: '1'
+      }
+      this.dialogFormVisible = true
+    },
+    updateInfo (row) {
+      this.state = true
+      this.form = {...row}
+      this.dialogFormVisible = true
+      console.log(row)
+    },
+    del () {
+      this.$alert('您确定要删除吗？', '删除提示', {
+        confirmButtonText: '确定',
+        callback: action => {
+          // 删除对应接口
+        }
+      })
+    },
+    onSubmit () {
+      console.log('submit!')
+    },
+    getDataList () {
+      this.service
+        .get('studentlist', {page: 1, size: 10})
+        .then(res => {
+          if (res.data.status === '200') {
+            res.data.data.forEach(item => {
+              item.sex === '1' ? item.sex_text = '男' : item.sex_text = '女'
+            })
+            this.tableData = [...res.data.data]
+          }
+          // console.log(res)
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    }
+  }
 }
 </script>
 <style>
